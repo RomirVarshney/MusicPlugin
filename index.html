@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<button id="play-btn">Play</button>
+<script src="audiokeys.min.js"></script>
+
+<script src="https://unpkg.com/tone@next"></script>
+
+<div>Volume<input id="Volume" type="range" min="-20" max="20" step="1" value="0"></input></div>
+
+<div id="note"></div> 
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js" integrity="sha512-Siyxh4gyNM5SaERNa9BOZSPcu/auHyFUWn9OVFD7MxI3/dVPQklE7tfqS+pLmPHF1zo6UdDaJAp/thihrf0c7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="app.js"></script>
+
+<button onclick="startbuttonfunction()">start me up!</button>
+<br>
+<br>
+<button onclick="stopbuttonfunction()">STOPIT!</button>
+
+<!-- call the "set_freq()" function with "this.value" when the slide is moved -->
+<input type="range" oninput="set_freq(this.value)">
+<output id="output"></output>
+
+<script>
+var osc = new Tone.Oscillator(378);
+	osc.toMaster();
+
+	function startbuttonfunction()
+  {
+		osc.start();
+	}
+
+	function stopbuttonfunction()
+  {
+		osc.stop();
+	}
+
+  function set_freq(val)
+  {
+		// multiply the value by 10 because the range slider goes from 0-100
+		document.getElementById('output').innerHTML = val * 10;
+		osc.frequency.value = val * 10;
+  }
+</script>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+
+</body>
+</html>
